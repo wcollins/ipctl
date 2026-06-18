@@ -92,9 +92,13 @@ func (svc *DeviceService) GetAll() ([]Device, error) {
 		List              []map[string]interface{} `json:"list"`
 	}
 
-	var res Response
-
 	for {
+		// Declare res inside the loop so each page decodes into a freshly
+		// allocated struct. Reusing a single res across pages lets
+		// encoding/json merge map fields and reuse slice backing arrays,
+		// bleeding fields from one page's elements into the next.
+		var res Response
+
 		body := map[string]interface{}{
 			"options": map[string]interface{}{
 				"order": "ascending",
