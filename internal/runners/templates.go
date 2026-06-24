@@ -113,7 +113,7 @@ func (r *TemplateRunner) Create(in Request) (*Response, error) {
 				return nil, err
 			}
 		} else if err != nil {
-			if err.Error() != "template not found" {
+			if !errors.Is(err, resources.ErrNotFound) {
 				return nil, err
 			}
 		}
@@ -413,7 +413,7 @@ func (r TemplateRunner) importTemplate(in services.Template, replace bool) error
 
 	p, err := r.resource.GetByName(in.Name)
 	if err != nil {
-		if err.Error() != "template not found" {
+		if !errors.Is(err, resources.ErrNotFound) {
 			return err
 		}
 	}

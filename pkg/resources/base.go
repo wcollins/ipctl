@@ -9,6 +9,24 @@ import (
 	"fmt"
 )
 
+// ErrNotFound is the sentinel error returned when a resource cannot be found by name.
+// Callers should use errors.Is(err, resources.ErrNotFound) to check for this condition.
+var ErrNotFound = errors.New("not found")
+
+// NotFoundError is returned by FindByName when no item matches the given name.
+type NotFoundError struct {
+	Kind string
+	Name string
+}
+
+func (e *NotFoundError) Error() string {
+	return fmt.Sprintf("%s '%s' not found", e.Kind, e.Name)
+}
+
+func (e *NotFoundError) Is(target error) bool {
+	return target == ErrNotFound
+}
+
 // BaseResource provides common functionality for resource operations.
 type BaseResource struct{}
 
@@ -19,13 +37,14 @@ func NewBaseResource() BaseResource {
 
 // FindByName is a generic helper that searches through a slice of items
 // and returns the first item where the getName function returns a matching name.
-func FindByName[T any](items []T, name string, getName func(T) string) (*T, error) {
+// Returns a *NotFoundError (which satisfies errors.Is(err, ErrNotFound)) when not found.
+func FindByName[T any](items []T, kind, name string, getName func(T) string) (*T, error) {
 	for i := range items {
 		if getName(items[i]) == name {
 			return &items[i], nil
 		}
 	}
-	return nil, fmt.Errorf("item with name '%s' not found", name)
+	return nil, &NotFoundError{Kind: kind, Name: name}
 }
 
 // DeleteAll is a generic helper that deletes all items using the provided delete function.

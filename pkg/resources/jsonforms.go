@@ -33,7 +33,7 @@ func (r *JsonFormResource) GetByName(name string) (*services.JsonForm, error) {
 		return nil, err
 	}
 
-	return FindByName(forms, name, func(f services.JsonForm) string {
+	return FindByName(forms, "json form", name, func(f services.JsonForm) string {
 		return f.Name
 	})
 }

@@ -33,7 +33,7 @@ func (r *DeviceGroupResource) GetByName(name string) (*services.DeviceGroup, err
 		return nil, err
 	}
 
-	return FindByName(groups, name, func(g services.DeviceGroup) string {
+	return FindByName(groups, "device group", name, func(g services.DeviceGroup) string {
 		return g.Name
 	})
 }

@@ -18,12 +18,12 @@ import (
 // mockClient implements client.Client for testing
 type mockClient struct{}
 
-func (m *mockClient) Get(*client.Request) (*client.Response, error)   { return nil, nil }
-func (m *mockClient) Post(*client.Request) (*client.Response, error)  { return nil, nil }
-func (m *mockClient) Put(*client.Request) (*client.Response, error)   { return nil, nil }
+func (m *mockClient) Get(*client.Request) (*client.Response, error)    { return nil, nil }
+func (m *mockClient) Post(*client.Request) (*client.Response, error)   { return nil, nil }
+func (m *mockClient) Put(*client.Request) (*client.Response, error)    { return nil, nil }
 func (m *mockClient) Delete(*client.Request) (*client.Response, error) { return nil, nil }
-func (m *mockClient) Patch(*client.Request) (*client.Response, error) { return nil, nil }
-func (m *mockClient) Trace(*client.Request) (*client.Response, error) { return nil, nil }
+func (m *mockClient) Patch(*client.Request) (*client.Response, error)  { return nil, nil }
+func (m *mockClient) Trace(*client.Request) (*client.Response, error)  { return nil, nil }
 
 // mockConfig implements config.Provider for testing
 type mockConfig struct {
@@ -48,13 +48,13 @@ func (m *mockConfig) GetRepository(name string) (*repository.Repository, error) 
 	return &repository.Repository{Url: name}, nil
 }
 
-func (m *mockConfig) GetWorkingDir() string            { return m.workingDir }
-func (m *mockConfig) GetDefaultProfile() string        { return m.defaultProfile }
-func (m *mockConfig) GetDefaultRepository() string     { return m.defaultRepository }
-func (m *mockConfig) IsDatasetsEnabled() bool          { return m.datasetsEnabled }
-func (m *mockConfig) GetGitName() string               { return m.gitName }
-func (m *mockConfig) GetGitEmail() string              { return m.gitEmail }
-func (m *mockConfig) GetGitUser() string               { return m.gitUser }
+func (m *mockConfig) GetWorkingDir() string        { return m.workingDir }
+func (m *mockConfig) GetDefaultProfile() string    { return m.defaultProfile }
+func (m *mockConfig) GetDefaultRepository() string { return m.defaultRepository }
+func (m *mockConfig) IsDatasetsEnabled() bool      { return m.datasetsEnabled }
+func (m *mockConfig) GetGitName() string           { return m.gitName }
+func (m *mockConfig) GetGitEmail() string          { return m.gitEmail }
+func (m *mockConfig) GetGitUser() string           { return m.gitUser }
 
 func TestNewRuntime(t *testing.T) {
 	tests := []struct {

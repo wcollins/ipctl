@@ -169,9 +169,9 @@ func TestNewRegistry_EmptyHandlers(t *testing.T) {
 
 func TestNewRegistry_SingleInterface(t *testing.T) {
 	tests := []struct {
-		name     string
-		handler  any
-		checkFn  func(*testing.T, *Registry)
+		name    string
+		handler any
+		checkFn func(*testing.T, *Registry)
 	}{
 		{
 			name:    "Reader interface",
@@ -305,10 +305,10 @@ func TestNewRegistry_NonHandlerTypes(t *testing.T) {
 	// Test that non-handler types are safely ignored
 	handlers := []any{
 		&mockReader{name: "valid"},
-		"string",         // Not a handler
-		42,               // Not a handler
-		nil,              // Nil value
-		struct{}{},       // Empty struct
+		"string",   // Not a handler
+		42,         // Not a handler
+		nil,        // Nil value
+		struct{}{}, // Empty struct
 	}
 
 	registry := NewRegistry(handlers)

@@ -102,7 +102,7 @@ func (r *JsonFormRunner) Create(in Request) (*Response, error) {
 				return nil, err
 			}
 		} else if err != nil {
-			if err.Error() != "jsonform not found" {
+			if !errors.Is(err, resources.ErrNotFound) {
 				return nil, err
 			}
 		}
