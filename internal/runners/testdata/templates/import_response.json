@@ -1,0 +1,16 @@
+{
+    "imported": [
+        {
+            "success": true,
+            "message": "Template imported successfully",
+            "original": {
+                "_id": "abc123",
+                "name": "test-template",
+                "description": "A test template",
+                "type": "jinja2",
+                "group": "Imported",
+                "template": "Hello {{ name }}"
+            }
+        }
+    ]
+}
