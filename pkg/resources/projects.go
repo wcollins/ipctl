@@ -80,7 +80,7 @@ func (r *ProjectResource) GetByName(name string) (*services.Project, error) {
 		return nil, err
 	}
 
-	return FindByName(projects, name, func(p services.Project) string {
+	return FindByName(projects, "project", name, func(p services.Project) string {
 		return p.Name
 	})
 }

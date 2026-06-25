@@ -57,7 +57,7 @@ func (r *GroupResource) GetByName(name string) (*services.Group, error) {
 		return nil, err
 	}
 
-	return FindByName(groups, name, func(g services.Group) string {
+	return FindByName(groups, "group", name, func(g services.Group) string {
 		return g.Name
 	})
 }

@@ -57,7 +57,7 @@ func (r *AccountResource) GetByName(name string) (*services.Account, error) {
 		return nil, err
 	}
 
-	return FindByName(accounts, name, func(a services.Account) string {
+	return FindByName(accounts, "account", name, func(a services.Account) string {
 		return a.Username
 	})
 }

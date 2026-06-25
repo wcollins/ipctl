@@ -100,7 +100,7 @@ func (r *ModelRunner) Create(in Request) (*Response, error) {
 				return nil, err
 			}
 		} else if err != nil {
-			if err.Error() != "model not found" {
+			if !errors.Is(err, resources.ErrNotFound) {
 				return nil, err
 			}
 		}

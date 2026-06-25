@@ -52,7 +52,7 @@ func (r *ModelResource) GetByName(name string) (*services.Model, error) {
 		return nil, err
 	}
 
-	return FindByName(models, name, func(m services.Model) string {
+	return FindByName(models, "model", name, func(m services.Model) string {
 		return m.Name
 	})
 }

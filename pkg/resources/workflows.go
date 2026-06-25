@@ -81,7 +81,7 @@ func (r *WorkflowResource) GetById(id string) (*services.Workflow, error) {
 		return nil, err
 	}
 
-	return FindByName(workflows, id, func(w services.Workflow) string {
+	return FindByName(workflows, "workflow", id, func(w services.Workflow) string {
 		return w.Id
 	})
 }

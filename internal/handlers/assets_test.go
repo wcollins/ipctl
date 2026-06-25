@@ -214,9 +214,6 @@ func createTestDescriptors() DescriptorMap {
 	}
 }
 
-
-
-
 func TestNewAssetHandler_WithFlags(t *testing.T) {
 	runner := &mockAssetRunner{supportsReader: true}
 	desc := createTestDescriptors()
@@ -257,7 +254,6 @@ func TestAssetHandler_Get_WithSupport(t *testing.T) {
 	assert.NotNil(t, cmd)
 	assert.Equal(t, "resources", cmd.Use)
 }
-
 
 func TestAssetHandler_Describe_ExactArgsSet(t *testing.T) {
 	runner := &mockAssetRunner{
@@ -334,7 +330,6 @@ func TestAssetHandler_Clear_WithSupport(t *testing.T) {
 
 	assert.NotNil(t, cmd)
 }
-
 
 func TestAssetHandler_Edit_WithSupport(t *testing.T) {
 	runner := &mockAssetRunner{
@@ -479,7 +474,6 @@ func TestAssetHandler_Load_WithSupport(t *testing.T) {
 
 	assert.NotNil(t, cmd)
 }
-
 
 func TestAssetHandler_WithCustomFlags(t *testing.T) {
 	runner := &mockAssetRunner{

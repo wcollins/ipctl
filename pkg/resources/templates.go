@@ -33,7 +33,7 @@ func (r *TemplateResource) GetByName(name string) (*services.Template, error) {
 		return nil, err
 	}
 
-	return FindByName(templates, name, func(t services.Template) string {
+	return FindByName(templates, "template", name, func(t services.Template) string {
 		return t.Name
 	})
 }
